@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Goatis Compass | Unlock</title>
+  <title>Goatis Compass | Support Access</title>
 
-  <!-- Fonts to match your site -->
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Text&family=Oswald&display=swap" rel="stylesheet">
 
   <style>
@@ -32,96 +31,72 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      overflow:hidden;
-    }
-
-    /* subtle grain */
-    body::after{
-      content:'';
-      position:fixed;
-      inset:0;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-      pointer-events:none;
-      opacity:.04;
     }
 
     .card{
       width:92%;
-      max-width:520px;
+      max-width:540px;
       background:linear-gradient(150deg,#1f1307 0%,#150d04 100%);
       border:1px solid rgba(212,160,23,.15);
-      padding:40px 32px;
+      padding:40px 30px;
       text-align:center;
       box-shadow:0 20px 60px rgba(0,0,0,.8);
-      animation:fadeUp .6s ease;
     }
 
-    @keyframes fadeUp{
-      from{opacity:0;transform:translateY(20px)}
-      to{opacity:1;transform:translateY(0)}
-    }
-
-    .goat{
-      font-size:64px;
-      margin-bottom:10px;
-      filter:drop-shadow(0 0 20px rgba(200,134,10,.5));
-      animation:breathe 3s ease-in-out infinite;
-    }
-
-    @keyframes breathe{
-      0%,100%{transform:scale(1)}
-      50%{transform:scale(1.06)}
-    }
+    .goat{font-size:60px;margin-bottom:10px}
 
     .title{
       font-family:'Bebas Neue',sans-serif;
-      font-size:54px;
+      font-size:52px;
       letter-spacing:6px;
       color:var(--bone);
-      text-shadow:0 0 40px rgba(192,57,43,.35);
-      margin-bottom:8px;
+      margin-bottom:6px;
     }
 
     .subtitle{
       font-style:italic;
       color:var(--bone-dim);
-      margin-bottom:28px;
+      margin-bottom:20px;
     }
+
+    .support-text{
+      font-size:15px;
+      line-height:1.6;
+      color:var(--text-dim);
+      margin-bottom:22px;
+    }
+
+    .support-text strong{color:var(--bone)}
 
     .tutorial{
       text-align:left;
       background:var(--surface);
       border:1px solid rgba(212,160,23,.2);
-      padding:26px 24px;
-      margin-bottom:28px;
+      padding:24px;
+      margin-bottom:24px;
     }
 
     .tutorial-title{
       font-family:'Bebas Neue',sans-serif;
       letter-spacing:3px;
-      font-size:24px;
+      font-size:22px;
       color:var(--fat);
-      margin-bottom:14px;
+      margin-bottom:12px;
       text-align:center;
     }
 
     .step{
       font-family:'Oswald',sans-serif;
       font-size:15px;
-      letter-spacing:1px;
-      margin-bottom:12px;
+      margin-bottom:10px;
       color:var(--bone-dim);
-    }
-
-    .step strong{
-      color:var(--bone);
     }
 
     .example{
       font-size:13px;
       color:var(--text-dim);
-      margin-bottom:14px;
-      padding-left:10px;
+      margin-bottom:12px;
+      padding-left:8px;
       border-left:2px solid rgba(212,160,23,.3);
     }
 
@@ -129,45 +104,72 @@
       border:3px solid rgba(255,255,255,.1);
       border-top:3px solid var(--fat);
       border-radius:50%;
-      width:38px;
-      height:38px;
+      width:36px;
+      height:36px;
       animation:spin 1s linear infinite;
-      margin:0 auto 14px;
+      margin:0 auto 12px;
     }
 
-    @keyframes spin{
-      0%{transform:rotate(0deg)}
-      100%{transform:rotate(360deg)}
-    }
+    @keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
 
     .timer{
       font-family:'Oswald',sans-serif;
       font-size:12px;
       letter-spacing:2px;
       color:var(--text-dim);
-      margin-top:10px;
     }
 
-    a{
-      display:inline-block;
-      margin-top:14px;
+    .skip-btn{
+      margin-top:18px;
       font-family:'Oswald',sans-serif;
       font-size:11px;
       letter-spacing:2px;
-      color:var(--bone-dim);
-      text-decoration:none;
-      border-bottom:1px solid rgba(212,160,23,.3);
+      background:none;
+      border:1px solid rgba(212,160,23,.2);
+      color:var(--text-dim);
+      padding:8px 16px;
+      cursor:pointer;
     }
 
-    a:hover{
-      color:var(--bone);
-      border-color:var(--fat);
+    .modal{
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.85);
+      align-items:center;
+      justify-content:center;
+    }
+
+    .modal-box{
+      background:var(--surface);
+      padding:24px;
+      border:1px solid rgba(212,160,23,.2);
+      max-width:420px;
+      text-align:center;
+    }
+
+    input{
+      margin-top:12px;
+      padding:10px;
+      width:100%;
+      background:#000;
+      border:1px solid #333;
+      color:white;
+    }
+
+    button.confirm{
+      margin-top:12px;
+      padding:10px 16px;
+      background:var(--blood);
+      border:none;
+      color:white;
+      cursor:pointer;
     }
 
   </style>
 
   <script>
-    let seconds = 7;
+    let seconds = 13;
 
     function updateTimer(){
       const el = document.getElementById('countdown');
@@ -181,7 +183,20 @@
 
     setTimeout(()=>{
       window.location.href="https://link-target.net/3065510/WFisschte5fy";
-    },7000);
+    },13000);
+
+    function openSkip(){
+      document.getElementById('modal').style.display='flex';
+    }
+
+    function confirmSkip(){
+      const val = document.getElementById('confirmText').value;
+      if(val.trim().toLowerCase()==="i don't want to support you"){
+        window.location.href="https://guyboy1.github.io/GoatisCompass.github.io/";
+      } else {
+        alert("Type the exact phrase to confirm.");
+      }
+    }
   </script>
 </head>
 
@@ -190,30 +205,48 @@
 
     <div class="goat">🐐</div>
     <div class="title">GOATIS</div>
-    <div class="subtitle">Compass Access Portal</div>
+    <div class="subtitle">Support the Creator</div>
+
+    <div class="support-text">
+      This short step <strong>directly supports me</strong> and helps me keep building Goatis Compass.
+      It only takes about <strong>30 seconds</strong> and requires <strong>no surveys or payments</strong>.
+      
+      <br><br>
+      Link systems like this are <strong>not scams</strong> — they simply allow creators like me to earn a bit from ads instead of charging you.
+    </div>
 
     <div class="tutorial">
-      <div class="tutorial-title">HOW TO UNLOCK</div>
+      <div class="tutorial-title">QUICK STEPS (30s)</div>
 
-      <div class="step">1. Click <strong>"Get Link"</strong></div>
-      <div class="example">Example: Big button at the center of the page</div>
+      <div class="step">1. Click <strong>Get Link</strong></div>
+      <div class="example">Big button on screen</div>
 
-      <div class="step">2. Select <strong>"Free Access with Ads"</strong></div>
-      <div class="example">Example: Usually the second option, not premium</div>
+      <div class="step">2. Choose <strong>Free Access with Ads</strong></div>
+      <div class="example">No payment needed</div>
 
-      <div class="step">3. Complete the <strong>3 ads</strong></div>
-      <div class="example">Example: Wait a few seconds → press skip → repeat</div>
+      <div class="step">3. Skip the 3 short ads</div>
+      <div class="example">Just wait → skip → repeat</div>
 
-      <div class="step">4. Your link unlocks instantly</div>
-      <div class="example">Example: Final page shows your destination</div>
+      <div class="step">4. Done — your link unlocks</div>
     </div>
 
     <div class="loader"></div>
+    <div class="timer">REDIRECTING IN <span id="countdown">13</span>S</div>
 
-    <div class="timer">REDIRECTING IN <span id="countdown">7</span>S</div>
-
-    <a href="https://link-target.net/3065510/WFisschte5fy">manual redirect</a>
+    <button class="skip-btn" onclick="openSkip()">I’d rather skip and not support</button>
 
   </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <p>This only takes ~30 seconds and directly supports the creator.
+      Are you sure you want to skip?</p>
+
+      <p style="margin-top:10px;font-size:12px;">Type: I don't want to support you</p>
+      <input id="confirmText" placeholder="Type here...">
+      <button class="confirm" onclick="confirmSkip()">Continue</button>
+    </div>
+  </div>
+
 </body>
 </html>
