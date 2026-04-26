@@ -47,8 +47,8 @@
 
     .title{
       font-family:'Bebas Neue',sans-serif;
-      font-size:52px;
-      letter-spacing:6px;
+      font-size:46px;
+      letter-spacing:5px;
       color:var(--bone);
       margin-bottom:6px;
     }
@@ -61,7 +61,7 @@
 
     .btn{
       font-family:'Bebas Neue',sans-serif;
-      font-size:22px;
+      font-size:20px;
       letter-spacing:3px;
       padding:14px 20px;
       margin:10px 0;
@@ -91,6 +91,15 @@
     }
 
     @keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+
+    .legal{
+      margin-top:18px;
+      font-size:11px;
+      color:var(--text-dim);
+      line-height:1.4;
+      border-top:1px solid rgba(255,255,255,.08);
+      padding-top:12px;
+    }
 
     .modal{
       display:none;
@@ -166,20 +175,20 @@
   <div class="card">
 
     <div class="goat">🐐</div>
-    <div class="title">GOATIS</div>
-    <div class="subtitle">Choose how to continue</div>
+    <div class="title">GOATIS COMPASS</div>
+    <div class="subtitle">Choose how you want to continue</div>
 
     <!-- CHOICE SCREEN -->
     <div id="choice">
-      <button class="btn support-btn" onclick="startSupport()">I WANT TO SUPPORT</button>
-      <button class="btn skip-btn" onclick="openSkip()">TAKE ME STRAIGHT TO THE LINK</button>
+      <button class="btn support-btn" onclick="startSupport()">SUPPORT GOATIS COMPASS</button>
+      <button class="btn skip-btn" onclick="openSkip()">GO STRAIGHT TO SITE</button>
     </div>
 
     <!-- SUPPORT FLOW -->
     <div id="supportFlow" class="hidden">
 
       <p style="margin-bottom:12px;color:var(--text-dim)">
-        This takes about <strong>30 seconds</strong> and directly supports me.
+        This takes about <strong>30 seconds</strong> and directly supports <strong>Goatis Compass</strong> and its development.
         No surveys, no payment — just quick ads.
       </p>
 
@@ -195,12 +204,20 @@
 
     </div>
 
+    <div class="legal">
+      This page is an independent redirect gateway created to help support the creator behind Goatis Compass. 
+      We are not officially affiliated with Goatis, goatis compass is just a nickname for our site that holds no legal bonding.
+      This page uses Linkvertise, which provides ad-based monetisation — meaning the creator may earn revenue when users go through the support option. 
+      Linkvertise is a legitimate ad platform; no purchases or surveys are required, and you can skip at any time. 
+      Ads and content are provided by third-party services.
+    </div>
+
   </div>
 
   <!-- SKIP MODAL -->
   <div class="modal" id="modal">
     <div class="modal-box">
-      <p>This helps support the creator and only takes ~30 seconds.
+      <p>This helps support Goatis Compass and only takes ~30 seconds.
       Are you sure you want to skip?</p>
       <input id="confirmText" placeholder="Type to confirm...">
       <button class="confirm" onclick="confirmSkip()">Continue</button>
