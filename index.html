@@ -3,97 +3,165 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Get Link</title>
+  <title>Goatis Compass | Unlock</title>
+
+  <!-- Fonts to match your site -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Text&family=Oswald&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    :root{
+      --bg:#0d0903;
+      --surface:#1a1005;
+      --surface2:#251808;
+      --bone:#e8d4a0;
+      --bone-dim:#c4b07a;
+      --blood:#8b1515;
+      --blood-bright:#c0392b;
+      --fat:#d4a017;
+      --text:#e0cfa0;
+      --text-dim:#a08060
     }
 
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at top, #ff4d4d, #990000);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      color: white;
+    body{
+      background: radial-gradient(ellipse at 50% 20%, #2a1208 0%, #0d0903 65%);
+      color:var(--text);
+      font-family:'Crimson Text',serif;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
     }
 
-    .card {
-      width: 90%;
-      max-width: 420px;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(18px);
-      border-radius: 24px;
-      padding: 35px 30px;
-      text-align: center;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-      animation: fadeIn 0.8s ease;
+    /* subtle grain */
+    body::after{
+      content:'';
+      position:fixed;
+      inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      pointer-events:none;
+      opacity:.04;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .card{
+      width:92%;
+      max-width:520px;
+      background:linear-gradient(150deg,#1f1307 0%,#150d04 100%);
+      border:1px solid rgba(212,160,23,.15);
+      padding:40px 32px;
+      text-align:center;
+      box-shadow:0 20px 60px rgba(0,0,0,.8);
+      animation:fadeUp .6s ease;
     }
 
-    h1 {
-      margin-bottom: 10px;
-      font-size: 26px;
-      letter-spacing: 0.5px;
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(20px)}
+      to{opacity:1;transform:translateY(0)}
     }
 
-    p {
-      font-size: 14px;
-      opacity: 0.9;
-      margin-bottom: 20px;
-      line-height: 1.5;
+    .goat{
+      font-size:64px;
+      margin-bottom:10px;
+      filter:drop-shadow(0 0 20px rgba(200,134,10,.5));
+      animation:breathe 3s ease-in-out infinite;
     }
 
-    .steps {
-      text-align: left;
-      font-size: 14px;
-      margin-bottom: 25px;
+    @keyframes breathe{
+      0%,100%{transform:scale(1)}
+      50%{transform:scale(1.06)}
     }
 
-    .steps span {
-      display: block;
-      margin-bottom: 8px;
-      opacity: 0.95;
+    .title{
+      font-family:'Bebas Neue',sans-serif;
+      font-size:54px;
+      letter-spacing:6px;
+      color:var(--bone);
+      text-shadow:0 0 40px rgba(192,57,43,.35);
+      margin-bottom:8px;
     }
 
-    .highlight {
-      font-weight: 600;
-      color: #ffd6d6;
+    .subtitle{
+      font-style:italic;
+      color:var(--bone-dim);
+      margin-bottom:28px;
     }
 
-    .loader {
-      border: 4px solid rgba(255,255,255,0.2);
-      border-top: 4px solid white;
-      border-radius: 50%;
-      width: 42px;
-      height: 42px;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 20px;
+    .tutorial{
+      text-align:left;
+      background:var(--surface);
+      border:1px solid rgba(212,160,23,.2);
+      padding:26px 24px;
+      margin-bottom:28px;
     }
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .tutorial-title{
+      font-family:'Bebas Neue',sans-serif;
+      letter-spacing:3px;
+      font-size:24px;
+      color:var(--fat);
+      margin-bottom:14px;
+      text-align:center;
     }
 
-    .timer {
-      font-size: 13px;
-      opacity: 0.8;
-      margin-top: 10px;
+    .step{
+      font-family:'Oswald',sans-serif;
+      font-size:15px;
+      letter-spacing:1px;
+      margin-bottom:12px;
+      color:var(--bone-dim);
     }
 
-    a {
-      color: #fff;
-      text-decoration: underline;
-      font-size: 13px;
-      opacity: 0.9;
+    .step strong{
+      color:var(--bone);
+    }
+
+    .example{
+      font-size:13px;
+      color:var(--text-dim);
+      margin-bottom:14px;
+      padding-left:10px;
+      border-left:2px solid rgba(212,160,23,.3);
+    }
+
+    .loader{
+      border:3px solid rgba(255,255,255,.1);
+      border-top:3px solid var(--fat);
+      border-radius:50%;
+      width:38px;
+      height:38px;
+      animation:spin 1s linear infinite;
+      margin:0 auto 14px;
+    }
+
+    @keyframes spin{
+      0%{transform:rotate(0deg)}
+      100%{transform:rotate(360deg)}
+    }
+
+    .timer{
+      font-family:'Oswald',sans-serif;
+      font-size:12px;
+      letter-spacing:2px;
+      color:var(--text-dim);
+      margin-top:10px;
+    }
+
+    a{
+      display:inline-block;
+      margin-top:14px;
+      font-family:'Oswald',sans-serif;
+      font-size:11px;
+      letter-spacing:2px;
+      color:var(--bone-dim);
+      text-decoration:none;
+      border-bottom:1px solid rgba(212,160,23,.3);
+    }
+
+    a:hover{
+      color:var(--bone);
+      border-color:var(--fat);
     }
 
   </style>
@@ -101,40 +169,51 @@
   <script>
     let seconds = 7;
 
-    function updateTimer() {
+    function updateTimer(){
       const el = document.getElementById('countdown');
-      if (seconds > 0) {
+      if(seconds > 0){
         el.textContent = seconds;
         seconds--;
       }
     }
 
-    setInterval(updateTimer, 1000);
+    setInterval(updateTimer,1000);
 
-    setTimeout(() => {
-      window.location.href = "https://link-target.net/3065510/WFisschte5fy";
-    }, 7000);
+    setTimeout(()=>{
+      window.location.href="https://link-target.net/3065510/WFisschte5fy";
+    },7000);
   </script>
 </head>
 
 <body>
   <div class="card">
-    <div class="loader"></div>
 
-    <h1>Getting Your Link…</h1>
+    <div class="goat">🐐</div>
+    <div class="title">GOATIS</div>
+    <div class="subtitle">Compass Access Portal</div>
 
-    <p>Follow these quick steps once redirected:</p>
+    <div class="tutorial">
+      <div class="tutorial-title">HOW TO UNLOCK</div>
 
-    <div class="steps">
-      <span>1. Click <span class="highlight">"Get Link"</span></span>
-      <span>2. Choose <span class="highlight">"Free Access with Ads"</span></span>
-      <span>3. Complete the <span class="highlight">3 short ads</span></span>
-      <span>4. Done — your link will unlock 🎉</span>
+      <div class="step">1. Click <strong>"Get Link"</strong></div>
+      <div class="example">Example: Big button at the center of the page</div>
+
+      <div class="step">2. Select <strong>"Free Access with Ads"</strong></div>
+      <div class="example">Example: Usually the second option, not premium</div>
+
+      <div class="step">3. Complete the <strong>3 ads</strong></div>
+      <div class="example">Example: Wait a few seconds → press skip → repeat</div>
+
+      <div class="step">4. Your link unlocks instantly</div>
+      <div class="example">Example: Final page shows your destination</div>
     </div>
 
-    <p class="timer">Redirecting in <span id="countdown">7</span> seconds...</p>
+    <div class="loader"></div>
 
-    <a href="https://link-target.net/3065510/WFisschte5fy">Click here if nothing happens</a>
+    <div class="timer">REDIRECTING IN <span id="countdown">7</span>S</div>
+
+    <a href="https://link-target.net/3065510/WFisschte5fy">manual redirect</a>
+
   </div>
 </body>
 </html>
