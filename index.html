@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Goatis Compass | Support Access</title>
+  <title>Goatis Compass | Access</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Text&family=Oswald&display=swap" rel="stylesheet">
 
@@ -59,77 +59,38 @@
       margin-bottom:20px;
     }
 
-    .support-text{
-      font-size:15px;
-      line-height:1.6;
-      color:var(--text-dim);
-      margin-bottom:22px;
-    }
-
-    .support-text strong{color:var(--bone)}
-
-    .tutorial{
-      text-align:left;
-      background:var(--surface);
-      border:1px solid rgba(212,160,23,.2);
-      padding:24px;
-      margin-bottom:24px;
-    }
-
-    .tutorial-title{
+    .btn{
       font-family:'Bebas Neue',sans-serif;
-      letter-spacing:3px;
       font-size:22px;
-      color:var(--fat);
-      margin-bottom:12px;
-      text-align:center;
+      letter-spacing:3px;
+      padding:14px 20px;
+      margin:10px 0;
+      width:100%;
+      cursor:pointer;
+      border:none;
     }
 
-    .step{
-      font-family:'Oswald',sans-serif;
-      font-size:15px;
-      margin-bottom:10px;
-      color:var(--bone-dim);
-    }
+    .support-btn{background:var(--blood);color:var(--bone)}
+    .support-btn:hover{background:var(--blood-bright)}
 
-    .example{
-      font-size:13px;
-      color:var(--text-dim);
-      margin-bottom:12px;
-      padding-left:8px;
-      border-left:2px solid rgba(212,160,23,.3);
-    }
+    .skip-btn{background:none;border:1px solid rgba(212,160,23,.2);color:var(--bone-dim)}
+
+    .hidden{display:none}
+
+    .tutorial{margin-top:20px;text-align:left}
+
+    .step{margin-bottom:8px}
 
     .loader{
       border:3px solid rgba(255,255,255,.1);
       border-top:3px solid var(--fat);
       border-radius:50%;
-      width:36px;
-      height:36px;
+      width:36px;height:36px;
       animation:spin 1s linear infinite;
-      margin:0 auto 12px;
+      margin:16px auto;
     }
 
     @keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
-
-    .timer{
-      font-family:'Oswald',sans-serif;
-      font-size:12px;
-      letter-spacing:2px;
-      color:var(--text-dim);
-    }
-
-    .skip-btn{
-      margin-top:18px;
-      font-family:'Oswald',sans-serif;
-      font-size:11px;
-      letter-spacing:2px;
-      background:none;
-      border:1px solid rgba(212,160,23,.2);
-      color:var(--text-dim);
-      padding:8px 16px;
-      cursor:pointer;
-    }
 
     .modal{
       display:none;
@@ -149,7 +110,7 @@
     }
 
     input{
-      margin-top:12px;
+      margin-top:10px;
       padding:10px;
       width:100%;
       background:#000;
@@ -158,8 +119,8 @@
     }
 
     button.confirm{
-      margin-top:12px;
-      padding:10px 16px;
+      margin-top:10px;
+      padding:10px;
       background:var(--blood);
       border:none;
       color:white;
@@ -169,32 +130,33 @@
   </style>
 
   <script>
-    let seconds = 13;
+    let seconds = 8;
+    let timer;
 
-    function updateTimer(){
-      const el = document.getElementById('countdown');
-      if(seconds > 0){
-        el.textContent = seconds;
-        seconds--;
-      }
+    function startSupport(){
+      document.getElementById('choice').classList.add('hidden');
+      document.getElementById('supportFlow').classList.remove('hidden');
+
+      timer = setInterval(()=>{
+        const el=document.getElementById('countdown');
+        if(seconds>0){el.textContent=seconds;seconds--;} else {clearInterval(timer);} 
+      },1000);
+
+      setTimeout(()=>{
+        window.location.href="https://link-target.net/3065510/WFisschte5fy";
+      },8000);
     }
-
-    setInterval(updateTimer,1000);
-
-    setTimeout(()=>{
-      window.location.href="https://link-target.net/3065510/WFisschte5fy";
-    },13000);
 
     function openSkip(){
       document.getElementById('modal').style.display='flex';
     }
 
     function confirmSkip(){
-      const val = document.getElementById('confirmText').value;
-      if(val.trim().toLowerCase()==="i don't want to support you"){
+      const val=document.getElementById('confirmText').value.toLowerCase();
+      if(val.includes("don't") && val.includes("support")){
         window.location.href="https://guyboy1.github.io/GoatisCompass.github.io/";
       } else {
-        alert("Type the exact phrase to confirm.");
+        alert("Type something like 'I don't want to support you'");
       }
     }
   </script>
@@ -205,45 +167,42 @@
 
     <div class="goat">🐐</div>
     <div class="title">GOATIS</div>
-    <div class="subtitle">Support the Creator</div>
+    <div class="subtitle">Choose how to continue</div>
 
-    <div class="support-text">
-      This short step <strong>directly supports me</strong> and helps me keep building Goatis Compass.
-      It only takes about <strong>30 seconds</strong> and requires <strong>no surveys or payments</strong>.
-      
-      <br><br>
-      Link systems like this are <strong>not scams</strong> — they simply allow creators like me to earn a bit from ads instead of charging you.
+    <!-- CHOICE SCREEN -->
+    <div id="choice">
+      <button class="btn support-btn" onclick="startSupport()">I WANT TO SUPPORT</button>
+      <button class="btn skip-btn" onclick="openSkip()">TAKE ME STRAIGHT TO THE LINK</button>
     </div>
 
-    <div class="tutorial">
-      <div class="tutorial-title">QUICK STEPS (30s)</div>
+    <!-- SUPPORT FLOW -->
+    <div id="supportFlow" class="hidden">
 
-      <div class="step">1. Click <strong>Get Link</strong></div>
-      <div class="example">Big button on screen</div>
+      <p style="margin-bottom:12px;color:var(--text-dim)">
+        This takes about <strong>30 seconds</strong> and directly supports me.
+        No surveys, no payment — just quick ads.
+      </p>
 
-      <div class="step">2. Choose <strong>Free Access with Ads</strong></div>
-      <div class="example">No payment needed</div>
+      <div class="tutorial">
+        <div class="step">1. Click Get Link</div>
+        <div class="step">2. Choose Free Access</div>
+        <div class="step">3. Skip 3 ads</div>
+        <div class="step">4. Done</div>
+      </div>
 
-      <div class="step">3. Skip the 3 short ads</div>
-      <div class="example">Just wait → skip → repeat</div>
+      <div class="loader"></div>
+      <div>Redirecting in <span id="countdown">8</span>s</div>
 
-      <div class="step">4. Done — your link unlocks</div>
     </div>
-
-    <div class="loader"></div>
-    <div class="timer">REDIRECTING IN <span id="countdown">13</span>S</div>
-
-    <button class="skip-btn" onclick="openSkip()">I’d rather skip and not support</button>
 
   </div>
 
+  <!-- SKIP MODAL -->
   <div class="modal" id="modal">
     <div class="modal-box">
-      <p>This only takes ~30 seconds and directly supports the creator.
+      <p>This helps support the creator and only takes ~30 seconds.
       Are you sure you want to skip?</p>
-
-      <p style="margin-top:10px;font-size:12px;">Type: I don't want to support you</p>
-      <input id="confirmText" placeholder="Type here...">
+      <input id="confirmText" placeholder="Type to confirm...">
       <button class="confirm" onclick="confirmSkip()">Continue</button>
     </div>
   </div>
